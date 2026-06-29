@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Datenschutz - Camorra City RP</title>
+    <style>
+        body, html { margin: 0; padding: 0; min-height: 100%; font-family: 'Arial', sans-serif; background: #000; color: white; padding-bottom: 60px; }
+        body { background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('regeln_bg.jpeg') no-repeat center top fixed; background-size: cover; }
+
+        /* Navigation */
+        nav { 
+            display: flex; 
+            align-items: center; 
+            padding: 30px 30px; 
+            background: rgba(0,0,0,0.6); 
+            position: relative;
+        }
+        
+        .logo-container { position: absolute; left: 30px; }
+        .logo { height: 60px; cursor: pointer; transition: 0.3s; }
+        .logo:hover { transform: scale(1.1); }
+        
+        .nav-links { flex-grow: 1; text-align: center; }
+        .nav-links a { color: white; margin: 0 20px; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; position: relative; }
+        .nav-links a:hover { color: #ff00ff; }
+        
+        .nav-links a.active {
+            color: #ff00ff;
+            animation: pulse 2s infinite;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #ff00ff;
+            box-shadow: 0 0 10px #ff00ff;
+        }
+
+        @keyframes pulse {
+            0% { text-shadow: 0 0 5px #ff00ff; }
+            50% { text-shadow: 0 0 15px #ff00ff, 0 0 20px #00d4ff; }
+            100% { text-shadow: 0 0 5px #ff00ff; }
+        }
+        
+        /* Animierte Trennlinie & Border */
+        .hr-line { height: 3px; width: 100%; background: linear-gradient(90deg, #ff00ff, #00d4ff, #ff00ff); background-size: 200% 100%; animation: gradient-move 3s linear infinite; }
+        @keyframes gradient-move { 0% { background-position: 0% 0; } 100% { background-position: 200% 0; } }
+
+        .container { max-width: 800px; margin: 50px auto; padding: 20px; }
+        
+        /* Einheitlicher dunkler Look */
+        .rule-border { 
+            position: relative; padding: 3px; border-radius: 22px; margin-bottom: 40px; 
+            background: linear-gradient(90deg, #ff00ff, #00d4ff, #ff00ff); 
+            background-size: 200% 100%; 
+            animation: gradient-move 3s linear infinite; 
+        }
+        .rule-card { background: rgba(0, 0, 0, 0.9); border-radius: 20px; padding: 30px; }
+        
+        h1 { text-align: center; text-transform: uppercase; margin-bottom: 50px; }
+        h2 { color: #00d4ff; margin-top: 15px; }
+        p { line-height: 1.6; }
+
+        footer { 
+            position: fixed; bottom: 0; width: 100%; padding: 15px; 
+            background: rgba(0,0,0,0.8); text-align: center; color: #aaa; font-size: 0.8rem; border-top: 1px solid #333;
+        }
+        footer a { color: #aaa; text-decoration: none; margin: 0 10px; }
+        footer a:hover { color: #ff00ff; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-container">
+            <a href="index.html"><img src="logo.gif" alt="Logo" class="logo"></a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="serverinfos.html">Serverinfos</a>
+            <a href="regeln.html">Regeln</a>
+            <a href="news.html">News</a>
+        </div>
+    </nav>
+    <div class="hr-line"></div>
+
+    <div class="container">
+        <h1>Datenschutzerklärung</h1>
+
+        <div class="rule-border">
+            <div class="rule-card">
+                <h2>1. Überblick</h2>
+                <p>Diese Datenschutzerklärung informiert dich über die Art, den Umfang und den Zweck der Erhebung und Verwendung personenbezogener Daten auf dieser Webseite.</p>
+
+                <h2>2. Zugriffsdaten</h2>
+                <p>Der Webseitenbetreiber bzw. Seitenprovider erhebt Daten über Zugriffe auf die Seite und speichert diese als „Server-Logfiles“ ab. Folgende Daten werden protokolliert: Besuchte Website, Uhrzeit zum Zeitpunkt des Zugriffes, Menge der gesendeten Daten in Byte, Quelle/Verweis, verwendeter Browser, verwendetes Betriebssystem und die IP-Adresse. Diese Daten werden zur Gewährleistung der Sicherheit und für die Fehleranalyse erhoben.</p>
+
+                <h2>3. Cookies</h2>
+                <p>Diese Webseite verwendet keine technisch unnötigen Cookies. Sollten Drittanbieter (wie z.B. Discord-Widgets) Cookies setzen, so liegt dies außerhalb unseres Einflussbereichs.</p>
+
+                <h2>4. Kontakt & externe Links</h2>
+                <p>Wenn du über die bereitgestellten Links oder E-Mail-Adressen Kontakt aufnimmst, werden deine angegebenen Daten zur Bearbeitung der Anfrage gespeichert. Für die Datenschutzerklärungen externer Dienste (wie Discord) gelten die Bedingungen des jeweiligen Anbieters.</p>
+
+                <h2>5. Deine Rechte</h2>
+                <p>Du hast jederzeit das Recht auf Auskunft, Berichtigung, Löschung oder Einschränkung der Verarbeitung deiner Daten, sofern diese von uns gespeichert wurden.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a>
+    </footer>
+
+</body>
+</html>
