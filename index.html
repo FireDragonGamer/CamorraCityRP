@@ -5,90 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Camorra City RP</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Arial', sans-serif; overflow: hidden; }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Arial', sans-serif; overflow: hidden; background: #000; }
 
-        #video-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+        /* YouTube Hintergrund-Container */
+        .video-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
+        #video-bg {
+            position: absolute; top: 50%; left: 50%; width: 100vw; height: 100vh;
+            transform: translate(-50%, -50%); pointer-events: none;
+        }
+        @media (min-aspect-ratio: 16/9) { #video-bg { height: 56.25vw; } }
+        @media (max-aspect-ratio: 16/9) { #video-bg { width: 177.78vh; } }
 
         /* Navigation */
-        nav { 
-            display: flex; 
-            align-items: center; 
-            padding: 30px 30px; 
-            background: rgba(0,0,0,0.6); 
-            position: relative;
-        }
-        
+        nav { display: flex; align-items: center; padding: 30px 30px; background: rgba(0,0,0,0.6); position: relative; }
         .logo-container { position: absolute; left: 30px; }
         .logo { height: 60px; cursor: pointer; transition: 0.3s; }
         .logo:hover { transform: scale(1.1); }
-        
         .nav-links { flex-grow: 1; text-align: center; }
         .nav-links a { color: white; margin: 0 20px; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; position: relative; }
         .nav-links a:hover { color: #ff00ff; }
+        .nav-links a.active { color: #ff00ff; animation: pulse 2s infinite; }
+        .nav-links a.active::after { content: ''; position: absolute; width: 100%; height: 2px; bottom: -5px; left: 0; background-color: #ff00ff; box-shadow: 0 0 10px #ff00ff; }
         
-        /* Animierter Stil für die aktive Seite */
-        .nav-links a.active {
-            color: #ff00ff;
-            animation: pulse 2s infinite;
-        }
-
-        .nav-links a.active::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: #ff00ff;
-            box-shadow: 0 0 10px #ff00ff;
-        }
-
-        @keyframes pulse {
-            0% { text-shadow: 0 0 5px #ff00ff; }
-            50% { text-shadow: 0 0 15px #ff00ff, 0 0 20px #00d4ff; }
-            100% { text-shadow: 0 0 5px #ff00ff; }
-        }
-        
+        @keyframes pulse { 0% { text-shadow: 0 0 5px #ff00ff; } 50% { text-shadow: 0 0 15px #ff00ff, 0 0 20px #00d4ff; } 100% { text-shadow: 0 0 5px #ff00ff; } }
         .hr-line { height: 3px; width: 100%; background: linear-gradient(90deg, #ff00ff, #00d4ff, #ff00ff); background-size: 200% 100%; animation: gradient-move 3s linear infinite; }
         @keyframes gradient-move { 0% { background-position: 0% 0; } 100% { background-position: 200% 0; } }
 
         .hero { margin-top: 10vh; color: white; text-align: center; }
         h1 { font-size: 7rem; line-height: 0.9; text-transform: uppercase; letter-spacing: 5px; margin: 0; text-shadow: 4px 4px 15px #ff00ff; }
+        .btn { display: inline-block; margin-top: 40px; padding: 15px 40px; background-color: transparent; border: 2px solid #ff00ff; color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; transition: 0.5s; }
+        .btn:hover { border-color: transparent; background: linear-gradient(90deg, #ff00ff, #00d4ff, #ff00ff); background-size: 200% 100%; animation: gradient-move 2s linear infinite; box-shadow: 0 0 20px rgba(255, 0, 255, 0.5); }
 
-        .btn { 
-            display: inline-block; 
-            margin-top: 40px; 
-            padding: 15px 40px; 
-            background-color: transparent; 
-            border: 2px solid #ff00ff; 
-            color: white; 
-            text-decoration: none; 
-            font-size: 1.2rem; 
-            font-weight: bold;
-            transition: 0.5s; 
-        }
-        .btn:hover { 
-            border-color: transparent;
-            background: linear-gradient(90deg, #ff00ff, #00d4ff, #ff00ff);
-            background-size: 200% 100%;
-            animation: gradient-move 2s linear infinite;
-            color: white;
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-        }
-
-        footer { 
-            position: fixed; bottom: 0; width: 100%; padding: 15px; 
-            background: rgba(0,0,0,0.7); text-align: center; color: #aaa; font-size: 0.8rem; border-top: 1px solid #333;
-        }
+        footer { position: fixed; bottom: 0; width: 100%; padding: 15px; background: rgba(0,0,0,0.7); text-align: center; color: #aaa; font-size: 0.8rem; border-top: 1px solid #333; }
         footer a { color: #aaa; text-decoration: none; margin: 0 10px; }
         footer a:hover { color: #ff00ff; }
     </style>
 </head>
 <body>
 
-    <video autoplay muted loop playsinline id="video-bg">
-        <source src="video.mp4" type="video/mp4">
-    </video>
+    <div class="video-container">
+        <iframe id="video-bg"
+            src="https://www.youtube.com/embed/qnq3XQX-NKg?autoplay=1&mute=1&loop=1&playlist=qnq3XQX-NKg&controls=0&showinfo=0&modestbranding=1&playsinline=1"
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+        </iframe>
+    </div>
 
     <nav>
         <div class="logo-container">
